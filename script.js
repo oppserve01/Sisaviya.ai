@@ -1,120 +1,273 @@
 /* ============================================================
-   Sisaviya.in — Patient Growth System for Dentists
-   script.js — All interactive functionality
+   Sisaviya.in — Premium Patient Growth System
+   script.js
    ============================================================ */
 
-// ── CONFIGURABLE VARIABLES ──────────────────────────────────
-// Toggle this to true/false to enable/disable the March offer on Super Plan
-const MARCH_OFFER = true; // {{MARCH_OFFER}} — set to false to hide the March offer
+'use strict';
 
-// WhatsApp number (country code, no +)
-const WA_NUMBER = '919798729776'; // {{WA_NUMBER}}
+/* ── NAVBAR ─────────────────────────────────────────────────── */
+const navbar    = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('navLinks');
 
-// ── MARCH OFFER LOGIC ───────────────────────────────────────
-(function applyMarchOffer() {
-  if (!MARCH_OFFER) return;
-  const offerEl = document.getElementById('superPlanOffer');
-  const priceEl = document.getElementById('superPlanPrice');
-  if (offerEl) offerEl.style.display = 'block';
-  if (priceEl) priceEl.textContent = '₹50,000';
-})();
-
-// ── NAVBAR SCROLL EFFECT ────────────────────────────────────
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
 window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-  lastScroll = currentScroll;
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
-// ── HAMBURGER MENU ──────────────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('active');
-  const isOpen = navLinks.classList.contains('active');
-  hamburger.setAttribute('aria-expanded', isOpen);
+  const open = navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active', open);
+  hamburger.setAttribute('aria-expanded', open);
 });
 
-// Close mobile menu when clicking a link
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
+// Close nav on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
     navLinks.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', false);
   });
 });
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-});
-
-// ── FAQ ACCORDION ───────────────────────────────────────────
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-answer');
-    const isActive = item.classList.contains('active');
-
-    // Close all others
-    document.querySelectorAll('.faq-item').forEach(faq => {
-      faq.classList.remove('active');
-      faq.querySelector('.faq-answer').style.maxHeight = null;
-      faq.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-    });
-
-    // Toggle clicked one
-    if (!isActive) {
-      item.classList.add('active');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-      btn.setAttribute('aria-expanded', 'true');
-    }
+/* ── SMOOTH SCROLL ──────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
 });
 
-// ── SCROLL REVEAL ANIMATION ─────────────────────────────────
-const revealElements = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
+/* ── SCROLL REVEAL ──────────────────────────────────────────── */
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+      observer.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -40px 0px'
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── COUNT-UP ANIMATION ─────────────────────────────────────── */
+function animateCount(el) {
+  const target  = parseInt(el.dataset.target, 10);
+  const prefix  = el.dataset.prefix  || '';
+  const suffix  = el.dataset.suffix  || '';
+  const duration = 1800;
+  const step    = 16;
+  const steps   = Math.ceil(duration / step);
+  let current   = 0;
+
+  const tick = () => {
+    current++;
+    const value = Math.round(easeOut(current / steps) * target);
+    el.textContent = prefix + formatNum(value) + suffix;
+    if (current < steps) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+function formatNum(n) {
+  if (n >= 100000) return (n / 100000).toFixed(1).replace(/\.0$/, '') + ' L';
+  return n.toLocaleString('en-IN');
+}
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCount(entry.target);
+      countObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+
+/* ── PARTICLE CANVAS ────────────────────────────────────────── */
+(function initCanvas() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const COUNT = 80;
+  const particles = Array.from({ length: COUNT }, () => createParticle(canvas));
+
+  function createParticle(c) {
+    return {
+      x:       Math.random() * c.width,
+      y:       Math.random() * c.height,
+      r:       Math.random() * 1.8 + 0.4,
+      dx:      (Math.random() - 0.5) * 0.4,
+      dy:      (Math.random() - 0.5) * 0.4,
+      alpha:   Math.random() * 0.5 + 0.1,
+      color:   Math.random() > 0.5 ? '11,95,255' : '0,201,167',
+    };
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      // Move
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+      // Draw dot
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+      ctx.fill();
+    });
+
+    // Draw connecting lines between nearby particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i], b = particles[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < 120) {
+          const alpha = (1 - dist / 120) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(11,95,255,${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // Respect reduced motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    draw();
+  }
+})();
+
+/* ── FAQ ACCORDION ──────────────────────────────────────────── */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item   = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('active');
+
+    // Close all
+    document.querySelectorAll('.faq-item.active').forEach(other => {
+      if (other !== item) {
+        other.classList.remove('active');
+        other.querySelector('.faq-answer').style.maxHeight = '0';
+        other.querySelector('.faq-question').setAttribute('aria-expanded', false);
+      }
+    });
+
+    // Toggle current
+    item.classList.toggle('active', !isOpen);
+    answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
+    btn.setAttribute('aria-expanded', !isOpen);
+  });
 });
-revealElements.forEach(el => revealObserver.observe(el));
 
-// ── CASE STUDY MODAL ────────────────────────────────────────
-const caseModal = document.getElementById('caseModal');
+/* ── CHECKBOX LABELS (SERVICE CHECKBOXES) ───────────────────── */
+document.querySelectorAll('.checkbox-label').forEach(label => {
+  const input = label.querySelector('input[type="checkbox"]');
+  input.addEventListener('change', () => {
+    label.classList.toggle('selected', input.checked);
+  });
+});
+
+/* ── OFFER TIMER (Super Plan) ───────────────────────────────── */
+(function checkOffer() {
+  const now = new Date();
+  const isMarch2025 = now.getMonth() === 2 && now.getFullYear() === 2025;
+  if (isMarch2025) {
+    const offerEl = document.getElementById('superPlanOffer');
+    const priceEl = document.getElementById('superPlanPrice');
+    if (offerEl) offerEl.style.display = 'block';
+    if (priceEl) priceEl.textContent = '₹45,000';
+  }
+})();
+
+/* ── DEMO FORM ──────────────────────────────────────────────── */
+const demoForm    = document.getElementById('demoForm');
+const formSuccess = document.getElementById('formSuccess');
+
+function showError(inputId, errorId) {
+  document.getElementById(inputId).classList.add('error');
+  document.getElementById(errorId).classList.add('show');
+}
+function clearError(inputId, errorId) {
+  document.getElementById(inputId).classList.remove('error');
+  document.getElementById(errorId).classList.remove('show');
+}
+
+['formName', 'formClinic', 'formCity', 'formPhone'].forEach(id => {
+  document.getElementById(id)?.addEventListener('input', () => {
+    const errorMap = { formName: 'nameError', formClinic: 'clinicError', formCity: 'cityError', formPhone: 'phoneError' };
+    clearError(id, errorMap[id]);
+  });
+});
+
+// Phone — digits only
+document.getElementById('formPhone')?.addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});
+
+if (demoForm) {
+  demoForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+
+    const name   = document.getElementById('formName').value.trim();
+    const clinic = document.getElementById('formClinic').value.trim();
+    const city   = document.getElementById('formCity').value.trim();
+    const phone  = document.getElementById('formPhone').value.trim();
+
+    if (!name)   { showError('formName',   'nameError');   valid = false; }
+    if (!clinic) { showError('formClinic', 'clinicError'); valid = false; }
+    if (!city)   { showError('formCity',   'cityError');   valid = false; }
+    if (!phone || !/^[6-9]\d{9}$/.test(phone)) { showError('formPhone', 'phoneError'); valid = false; }
+
+    if (!valid) return;
+
+    const services = [...document.querySelectorAll('input[name="services"]:checked')]
+      .map(cb => cb.value).join(', ') || 'Not specified';
+
+    const waMsg = `Hi Sisaviya.in,\n\nMy details for a Free Demo:\n• Name: ${name}\n• Clinic: ${clinic}\n• City: ${city}\n• Phone: ${phone}\n• Interested In: ${services}\n\nPlease contact me to schedule a 15-min demo.`;
+    const waUrl = `https://wa.me/919798729776?text=${encodeURIComponent(waMsg)}`;
+
+    // Show Success
+    demoForm.style.display = 'none';
+    formSuccess.classList.add('show');
+    document.getElementById('waRedirectBtn').href = waUrl;
+
+    // Auto-open WA after 1.5s
+    setTimeout(() => { window.open(waUrl, '_blank', 'noopener'); }, 1500);
+  });
+}
+
+/* ── MODAL — CASE STUDIES ───────────────────────────────────── */
+const caseModal   = document.getElementById('caseModal');
 const viewMoreBtn = document.getElementById('viewMoreCases');
-const modalClose = document.getElementById('modalClose');
+const modalClose  = document.getElementById('modalClose');
 
-viewMoreBtn.addEventListener('click', () => {
+viewMoreBtn?.addEventListener('click', () => {
   caseModal.classList.add('active');
   document.body.style.overflow = 'hidden';
-});
-
-modalClose.addEventListener('click', closeModal);
-caseModal.addEventListener('click', (e) => {
-  if (e.target === caseModal) closeModal();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && caseModal.classList.contains('active')) closeModal();
 });
 
 function closeModal() {
@@ -122,213 +275,103 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// ── CHECKBOX STYLING ────────────────────────────────────────
-document.querySelectorAll('.checkbox-label input[type="checkbox"]').forEach(cb => {
-  cb.addEventListener('change', () => {
-    cb.closest('.checkbox-label').classList.toggle('selected', cb.checked);
-  });
+modalClose?.addEventListener('click', closeModal);
+caseModal?.addEventListener('click', e => { if (e.target === caseModal) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && caseModal?.classList.contains('active')) closeModal();
 });
 
-// ── DEMO FORM LOGIC ─────────────────────────────────────────
-const demoForm = document.getElementById('demoForm');
-const formSuccess = document.getElementById('formSuccess');
-const waRedirectBtn = document.getElementById('waRedirectBtn');
-
-demoForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  // Reset errors
-  document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('show'));
-  document.querySelectorAll('.form-group input').forEach(el => el.classList.remove('error'));
-
-  const name = document.getElementById('formName').value.trim();
-  const clinic = document.getElementById('formClinic').value.trim();
-  const city = document.getElementById('formCity').value.trim();
-  const phone = document.getElementById('formPhone').value.trim();
-
-  let valid = true;
-
-  // Validate Name
-  if (!name) {
-    showError('formName', 'nameError');
-    valid = false;
-  }
-  // Validate Clinic
-  if (!clinic) {
-    showError('formClinic', 'clinicError');
-    valid = false;
-  }
-  // Validate City
-  if (!city) {
-    showError('formCity', 'cityError');
-    valid = false;
-  }
-  // Validate Phone (Indian mobile: starts with 6-9, 10 digits)
-  if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
-    showError('formPhone', 'phoneError');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  // Collect selected services
-  const services = [];
-  document.querySelectorAll('input[name="services"]:checked').forEach(cb => {
-    services.push(cb.value);
-  });
-  const servicesText = services.length > 0 ? services.join(', ') : 'Not specified';
-
-  // Build WhatsApp URL with prefilled message
-  const waMessage = `Hi, I want a demo for Dental Patient Growth System.
-Name: ${name}
-Clinic: ${clinic}
-City: ${city}
-Phone: ${phone}
-Interested in: ${servicesText}`;
-
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
-
-  // Set the WhatsApp redirect button href
-  waRedirectBtn.href = waUrl;
-
-  // Show success, hide form
-  demoForm.style.display = 'none';
-  formSuccess.classList.add('show');
-
-  // Smooth scroll to the success message
-  formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-
-function showError(inputId, errorId) {
-  document.getElementById(inputId).classList.add('error');
-  document.getElementById(errorId).classList.add('show');
-}
-
-// ── SMOOTH SCROLL FOR ANCHOR LINKS ──────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const offset = 80; // navbar height + spacing
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
-
-// ── PHONE INPUT — NUMBERS ONLY ──────────────────────────────
-const phoneInput = document.getElementById('formPhone');
-if (phoneInput) {
-  phoneInput.addEventListener('input', (e) => {
-    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
-  });
-}
-
-// ── CHATBOT ──────────────────────────────────────────────────
-const OPENROUTER_API_KEY = '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';
-const CHATBOT_MODEL = 'openai/gpt-4o-mini'; // gpt-oss-20b maps to gpt-4o-mini on OpenRouter
-
-const chatbotToggle = document.getElementById('chatbotToggle');
-const chatbotWindow = document.getElementById('chatbotWindow');
-const chatbotClose  = document.getElementById('chatbotClose');
+/* ── CHATBOT ────────────────────────────────────────────────── */
+const chatbotWindow  = document.getElementById('chatbotWindow');
+const chatbotToggle  = document.getElementById('chatbotToggle');
+const chatbotClose   = document.getElementById('chatbotClose');
+const chatbotInput   = document.getElementById('chatbotInput');
+const chatbotSend    = document.getElementById('chatbotSend');
 const chatbotMessages = document.getElementById('chatbotMessages');
-const chatbotInput  = document.getElementById('chatbotInput');
-const chatbotSend   = document.getElementById('chatbotSend');
-const iconChat      = chatbotToggle.querySelector('.icon-chat');
-const iconClose     = chatbotToggle.querySelector('.icon-close');
 
-// Conversation history for context
-const chatHistory = [
-  {
-    role: 'system',
-    content: `You are a helpful AI assistant for Sisaviya.in, a dental patient growth system. 
-You help dental clinic owners understand our services: Google Maps SEO (Top 3 ranking), 
-WhatsApp Booking System, 24/7 AI Website Chatbot, and Appointment Reminders + Review Requests.
-Pricing: Simple Plan ₹20,000, Special Plan ₹40,000, Super Plan ₹60,000 (all one-time fees). 
-You help dentists get 15-20 extra patients per month. Be friendly, concise, and helpful. 
-If someone wants to book a demo, direct them to fill the form on the page or WhatsApp: +91 97987 29776.`
-  }
-];
+const SYSTEM_PROMPT = `You are a helpful assistant for Sisaviya.in, a digital marketing agency that helps dental clinics in India get more patients using Google Maps SEO, WhatsApp booking systems, AI chatbots, and automated reminders.
 
-function openChatbot() {
-  chatbotWindow.classList.add('open');
-  iconChat.style.display = 'none';
-  iconClose.style.display = 'flex';
-  chatbotInput.focus();
+Keep answers SHORT (2-3 sentences max). Be friendly and professional. Speak naturally (mix of English is OK to match Indian style). Always end with a relevant next step.
+
+Key facts:
+- Simple Plan: ₹20,000 one-time
+- Special Plan: ₹40,000 one-time  
+- Super Plan: ₹60,000 one-time (includes free website)
+- Results in 30-60 days
+- 159+ dentists helped
+- WhatsApp: +91 97987 29776
+- Setup time: 7 days`;
+
+let messages = [{ role: 'assistant', content: "Hi! I'm your AI assistant. How can I help you grow your dental clinic today?" }];
+let chatOpen = false;
+
+function toggleChat(open) {
+  chatOpen = open;
+  chatbotWindow.classList.toggle('open', open);
+  const iconChat  = chatbotToggle.querySelector('.icon-chat');
+  const iconClose = chatbotToggle.querySelector('.icon-close');
+  if (iconChat)  iconChat.style.display  = open ? 'none' : '';
+  if (iconClose) iconClose.style.display = open ? ''     : 'none';
 }
 
-function closeChatbot() {
-  chatbotWindow.classList.remove('open');
-  iconChat.style.display = 'flex';
-  iconClose.style.display = 'none';
-}
+chatbotToggle.addEventListener('click', () => toggleChat(!chatOpen));
+chatbotClose.addEventListener('click',  () => toggleChat(false));
 
-chatbotToggle.addEventListener('click', () => {
-  chatbotWindow.classList.contains('open') ? closeChatbot() : openChatbot();
-});
-chatbotClose.addEventListener('click', closeChatbot);
-
-function appendMessage(text, role) {
-  const msgDiv = document.createElement('div');
-  msgDiv.className = `chat-message ${role}`;
-  msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
-  chatbotMessages.appendChild(msgDiv);
+function appendMessage(role, content) {
+  const div = document.createElement('div');
+  div.className = `chat-message ${role}`;
+  div.innerHTML = `<div class="message-content">${content}</div>`;
+  chatbotMessages.appendChild(div);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-  return msgDiv;
+  return div;
 }
 
-function showTyping() {
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'chat-message bot chat-typing';
-  typingDiv.id = 'chatTyping';
-  typingDiv.innerHTML = `<div class="message-content"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
-  chatbotMessages.appendChild(typingDiv);
+function appendTyping() {
+  const div = document.createElement('div');
+  div.className = 'chat-message bot chat-typing';
+  div.innerHTML = `<div class="message-content"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+  chatbotMessages.appendChild(div);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-}
-
-function removeTyping() {
-  const t = document.getElementById('chatTyping');
-  if (t) t.remove();
+  return div;
 }
 
 async function sendChatMessage() {
   const text = chatbotInput.value.trim();
   if (!text) return;
 
-  chatbotInput.value = '';
+  chatbotInput.value  = '';
   chatbotSend.disabled = true;
 
-  appendMessage(text, 'user');
-  chatHistory.push({ role: 'user', content: text });
-  showTyping();
+  messages.push({ role: 'user', content: text });
+  appendMessage('user', escapeHtml(text));
+
+  const typing = appendTyping();
 
   try {
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://sisaviya.in',
-        'X-Title': 'Sisaviya AI Chatbot'
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer YOUR_OPENROUTER_KEY_HERE',
+        'HTTP-Referer':  'https://sisaviya.in',
+        'X-Title':       'Sisaviya.in',
       },
       body: JSON.stringify({
-        model: CHATBOT_MODEL,
-        messages: chatHistory,
-        max_tokens: 300,
-        temperature: 0.7
-      })
+        model:    'openai/gpt-4o-mini',
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages.slice(-8)],
+        max_tokens: 200,
+        temperature: 0.7,
+      }),
     });
 
-    const data = await res.json();
-    removeTyping();
-
-    const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't get a response. Please try again!";
-    chatHistory.push({ role: 'assistant', content: reply });
-    appendMessage(reply, 'bot');
-  } catch (err) {
-    removeTyping();
-    appendMessage("Oops! Something went wrong. Please try again or WhatsApp us at +91 97987 29776.", 'bot');
+    const data   = await response.json();
+    const reply  = data?.choices?.[0]?.message?.content || 'Sorry, I couldn\'t get a response. Please WhatsApp us at +91 97987 29776.';
+    typing.remove();
+    messages.push({ role: 'assistant', content: reply });
+    appendMessage('bot', escapeHtml(reply));
+  } catch {
+    typing.remove();
+    appendMessage('bot', 'Oops! Something went wrong. Please <a href="https://wa.me/919798729776" style="color:var(--jade);">WhatsApp us directly.</a>');
   } finally {
     chatbotSend.disabled = false;
     chatbotInput.focus();
@@ -336,10 +379,19 @@ async function sendChatMessage() {
 }
 
 chatbotSend.addEventListener('click', sendChatMessage);
-chatbotInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendChatMessage();
-  }
-});
+chatbotInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(); });
 
+function escapeHtml(str) {
+  const d = document.createElement('div'); d.textContent = str; return d.innerHTML;
+}
+
+/* ── FEATURE CARD HOVER GLOW ────────────────────────────────── */
+document.querySelectorAll('.feature-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top)  / rect.height) * 100;
+    card.style.setProperty('--mouse-x', `${x}%`);
+    card.style.setProperty('--mouse-y', `${y}%`);
+  });
+});

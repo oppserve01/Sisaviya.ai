@@ -15,7 +15,6 @@
   <meta property="og:description" content="Done-for-you Google Maps ranking, WhatsApp bookings, chatbot & automated reminders for dental clinics in India. 15–20 extra patients/month." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sisaviya.in" />
-  <!-- {{OG_IMAGE}} — replace with actual image URL -->
   <meta property="og:image" content="https://sisaviya.in/og-image.jpg" />
   <meta property="og:locale" content="en_IN" />
 
@@ -42,27 +41,10 @@
           "availableLanguage": ["English", "Hindi"]
         },
         "sameAs": []
-      },
-      {
-        "@type": "LocalBusiness",
-        "name": "Sisaviya.in",
-        "url": "https://sisaviya.in",
-        "telephone": "+919798729776",
-        "description": "Digital marketing agency specializing in patient growth for dental clinics across India.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-        },
-        "priceRange": "₹₹"
       }
     ]
   }
   </script>
-
-  <!-- Fonts: Inter from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
@@ -76,13 +58,12 @@
   <div class="container nav-inner">
     <a href="#" class="nav-brand" aria-label="Sisaviya.in home">Sisaviya<span>.in</span></a>
     <div class="nav-links" id="navLinks" role="menu">
-      <a href="#features" role="menuitem">What We Do</a>
-      <a href="#results" role="menuitem">Results</a>
+      <a href="#features"    role="menuitem">What We Do</a>
+      <a href="#results"     role="menuitem">Results</a>
       <a href="#how-it-works" role="menuitem">How It Works</a>
-      <a href="#pricing" role="menuitem">Pricing</a>
+      <a href="#pricing"     role="menuitem">Pricing</a>
       <a href="#testimonials" role="menuitem">Reviews</a>
-      <!-- {{CALENDLY_OR_DEMO_LINK}} — replace with your Calendly / booking link -->
-      <a href="#book-demo" class="btn btn-primary btn-sm nav-cta" role="menuitem">Book Free Demo</a>
+      <a href="#book-demo" class="btn btn-jade btn-sm nav-cta" role="menuitem">Book Free Demo</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -94,20 +75,21 @@
      1) HERO
      ============================================================ -->
 <section class="hero" id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
 
-  <!-- Hero Content (foreground) -->
   <div class="container hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
+
+    <div class="hero-eyebrow">
+      <span class="pulse-dot"></span>
       Patient Growth System for Dentists
     </div>
 
-  </div><canvas></canvas>
-
     <h1>
       We Help Dental Clinics Get
-      <span class="highlight">15–20 Extra Patients/Month</span>
-      Using Google + WhatsApp Automation
+      <span class="gradient-text">15–20 Extra Patients/Month</span>
+      Using Google + WhatsApp
     </h1>
 
     <p class="hero-sub">
@@ -116,34 +98,66 @@
     </p>
 
     <div class="hero-buttons">
-      <!-- {{CALENDLY_OR_DEMO_LINK}} — replace with your Calendly / booking link -->
-      <a href="#book-demo" class="btn btn-primary btn-lg" id="heroCTAPrimary">
-        📅 Book Free 15-min Demo
+      <a href="#book-demo" class="btn btn-jade btn-lg" id="heroCTAPrimary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Free 15-min Demo
       </a>
-      <!-- WhatsApp CTA — uses wa.me with pre-filled message -->
       <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20a%2015-min%20demo%20for%20the%20Dental%20Patient%20Growth%20System." class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
-        💬 Chat on WhatsApp
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
       </a>
     </div>
 
-    <div class="trust-badges">
-      <span class="trust-badge"><span class="badge-icon">📍</span> Google Maps SEO</span>
-      <span class="trust-badge"><span class="badge-icon">💬</span> WhatsApp Booking</span>
-      <span class="trust-badge"><span class="badge-icon">⚡</span> Automation</span>
-      <span class="trust-badge"><span class="badge-icon">⭐</span> Reviews Growth</span>
-    </div>
-
-    <div class="clinic-strip">
-      <p>Trusted by clinics across India</p>
-      <div class="clinic-logos">
-        <!-- {{LOGO_PLACEHOLDER}} — replace these with actual clinic logos -->
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
+    <!-- Live Stats -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value count-up" data-target="159">0</div>
+        <div class="hero-stat-label">Dentists Helped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value count-up" data-target="15">0</div>
+        <div class="hero-stat-label">Avg. Extra Patients/Mo</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value count-up" data-prefix="₹" data-target="136000" data-suffix="+ /mo">0</div>
+        <div class="hero-stat-label">Extra Revenue Generated</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">7</div>
+        <div class="hero-stat-label">Days to Go Live</div>
       </div>
     </div>
+
+    <!-- Feature Chips -->
+    <div class="hero-chips">
+      <span class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Google Maps SEO
+      </span>
+      <span class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        WhatsApp Booking
+      </span>
+      <span class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        AI Chatbot 24/7
+      </span>
+      <span class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        Auto Reminders
+      </span>
+      <span class="hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Review Growth
+      </span>
+    </div>
+
+  </div>
+
+  <!-- Scroll Hint -->
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-hint-wheel"></div>
+    <span>Scroll</span>
   </div>
 </section>
 
@@ -152,6 +166,7 @@
      ============================================================ -->
 <section class="section section-alt" id="features">
   <div class="container text-center">
+    <div class="section-label reveal">Our Services</div>
     <h2 class="section-title reveal">What We Do</h2>
     <p class="section-subtitle reveal">
       Four powerful services that bring more patients to your clinic — on autopilot.
@@ -160,101 +175,92 @@
     <div class="features-grid">
       <!-- Card 1 -->
       <div class="feature-card reveal">
-        <div class="feature-icon blue">📍</div>
         <h3>Google Maps Ranking (Top 3)</h3>
         <p>We optimise your Google Business profile so patients in your area find you first — no ads required.</p>
-        <!-- {{TYPICAL_RESULT_PLACEHOLDER}} -->
-        <span class="feature-result">📈 Typical result: +35 calls/month</span>
+        <span class="feature-result">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Typical: +35 calls/month
+        </span>
       </div>
 
       <!-- Card 2 -->
       <div class="feature-card reveal">
-        <div class="feature-icon teal">💬</div>
         <h3>WhatsApp Booking System</h3>
         <p>Patients book appointments directly via WhatsApp. No more missed calls or phone tag.</p>
-        <!-- {{TYPICAL_RESULT_PLACEHOLDER}} -->
-        <span class="feature-result">📈 Typical result: +20 bookings/month</span>
+        <span class="feature-result">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Typical: +20 bookings/month
+        </span>
       </div>
 
       <!-- Card 3 -->
       <div class="feature-card reveal">
-        <div class="feature-icon blue">🤖</div>
         <h3>Website Chatbot (Instant Replies)</h3>
         <p>24/7 AI chatbot on your website answers patient queries instantly — even at 2 AM.</p>
-        <!-- {{TYPICAL_RESULT_PLACEHOLDER}} -->
-        <span class="feature-result">📈 Typical result: +15 enquiries/month</span>
+        <span class="feature-result">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Typical: +15 enquiries/month
+        </span>
       </div>
 
       <!-- Card 4 -->
       <div class="feature-card reveal">
-        <div class="feature-icon teal">🔔</div>
         <h3>Reminders + Review Requests</h3>
         <p>Automated appointment reminders (no more no-shows) + review requests after every visit.</p>
-        <!-- {{TYPICAL_RESULT_PLACEHOLDER}} -->
-        <span class="feature-result">📈 Typical result: +25 reviews/month</span>
+        <span class="feature-result">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Typical: +25 reviews/month
+        </span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     ROI MATH — Why the investment makes sense
+     ROI MATH
      ============================================================ -->
 <section class="section roi-section" id="roi-math">
   <div class="container text-center">
-    <h2 class="section-title reveal">Do The Math 🧮</h2>
+    <div class="section-label reveal">Return on Investment</div>
+    <h2 class="section-title reveal">Do The Math</h2>
     <p class="section-subtitle reveal">
       Thoda basic maths lagao — samajh aa jayega ki yeh investment kitni worth hai.
     </p>
 
-
     <div class="roi-calculator reveal">
-      <!-- Step 1: Extra patients -->
       <div class="roi-step">
-        <div class="roi-step-icon">👨‍⚕️</div>
-        <div class="roi-step-content">
-          <div class="roi-label">Average Extra Patients/Month</div>
-          <div class="roi-value">17</div>
-          <div class="roi-note">patients</div>
-        </div>
+        <div class="roi-label">Avg. Extra Patients/Month</div>
+        <div class="roi-value count-up" data-target="17">0</div>
+        <div class="roi-note">patients</div>
       </div>
 
-      <div class="roi-operator reveal">×</div>
+      <div class="roi-operator-cell">×</div>
 
-      <!-- Step 2: Avg revenue per patient -->
       <div class="roi-step reveal">
-        <div class="roi-step-icon">💰</div>
-        <div class="roi-step-content">
-          <div class="roi-label">Avg. Revenue per Patient</div>
-          <div class="roi-value">₹8,000</div>
-          <div class="roi-note">per patient (avg)</div>
-        </div>
+        <div class="roi-label">Avg. Revenue per Patient</div>
+        <div class="roi-value">₹8,000</div>
+        <div class="roi-note">per patient (avg)</div>
       </div>
 
-      <div class="roi-operator reveal">=</div>
+      <div class="roi-operator-cell">=</div>
 
-      <!-- Step 3: Monthly extra revenue -->
       <div class="roi-step roi-step-highlight reveal">
-        <div class="roi-step-icon">🚀</div>
-        <div class="roi-step-content">
-          <div class="roi-label">Extra Monthly Revenue</div>
-          <div class="roi-value big">₹1,36,000</div>
-          <div class="roi-note">per month — har mahine!</div>
-        </div>
+        <div class="roi-label">Extra Monthly Revenue</div>
+        <div class="roi-value big">₹1,36,000</div>
+        <div class="roi-note">per month — har mahine!</div>
       </div>
     </div>
 
-    <!-- Conclusion card -->
     <div class="roi-conclusion reveal">
       <div class="roi-conclusion-inner">
-        <div class="roi-conclusion-icon">💡</div>
         <p class="roi-conclusion-text">
           Agar aap har mahine <strong>₹1.3 – ₹1.5 lakh extra kama rahe ho</strong>, toh
           <span class="roi-highlight-amount">₹30,000 one-time investment</span>
           mein koi burai nahi hai — yeh toh pehle mahine mein hi recover ho jaata hai!
         </p>
-        <a href="#book-demo" class="btn btn-primary btn-lg" style="margin-top: 20px;">
-          📅 Start Growing Your Clinic
+        <a href="#book-demo" class="btn btn-jade btn-lg" style="margin-top:24px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          Start Growing Your Clinic
         </a>
       </div>
     </div>
@@ -266,44 +272,29 @@
      ============================================================ -->
 <section class="section" id="results">
   <div class="container text-center">
+    <div class="section-label reveal">Proven Results</div>
     <h2 class="section-title reveal">Results</h2>
-    <p class="section-subtitle reveal">
-      159+ dentists helped in the last 6 months.
-    </p>
+    <p class="section-subtitle reveal">159+ dentists helped in the last 6 months.</p>
 
-    <div class="results-grid" style="margin-top: 36px;">
-      <!-- {{CASE_STUDY_1}} -->
+    <div class="results-grid" style="margin-top:36px;">
+
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Rajesh K.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 60 days</span>
+          <h3>Dr. Rajesh K.</h3>
+          <span class="case-timeline-badge">60 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">12</span>
-              <span class="arrow">→</span>
-              <span class="after">47</span>
-            </div>
+            <div class="before-after"><span class="before">12</span><span class="arrow">→</span><span class="after">47</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">9</span>
-              <span class="arrow">→</span>
-              <span class="after">16</span>
-            </div>
+            <div class="before-after"><span class="before">9</span><span class="arrow">→</span><span class="after">16</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">38</span>
-              <span class="arrow">→</span>
-              <span class="after">92</span>
-            </div>
+            <div class="before-after"><span class="before">38</span><span class="arrow">→</span><span class="after">92</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -313,38 +304,23 @@
         </div>
       </div>
 
-      <!-- {{CASE_STUDY_2}} -->
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Priya S.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 45 days</span>
+          <h3>Dr. Priya S.</h3>
+          <span class="case-timeline-badge">45 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">18</span>
-              <span class="arrow">→</span>
-              <span class="after">55</span>
-            </div>
+            <div class="before-after"><span class="before">18</span><span class="arrow">→</span><span class="after">55</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">11</span>
-              <span class="arrow">→</span>
-              <span class="after">19</span>
-            </div>
+            <div class="before-after"><span class="before">11</span><span class="arrow">→</span><span class="after">19</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">21</span>
-              <span class="arrow">→</span>
-              <span class="after">64</span>
-            </div>
+            <div class="before-after"><span class="before">21</span><span class="arrow">→</span><span class="after">64</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -354,38 +330,23 @@
         </div>
       </div>
 
-      <!-- {{CASE_STUDY_3}} -->
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Amit V.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 30 days</span>
+          <h3>Dr. Amit V.</h3>
+          <span class="case-timeline-badge">30 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">8</span>
-              <span class="arrow">→</span>
-              <span class="after">38</span>
-            </div>
+            <div class="before-after"><span class="before">8</span><span class="arrow">→</span><span class="after">38</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">5</span>
-              <span class="arrow">→</span>
-              <span class="after">14</span>
-            </div>
+            <div class="before-after"><span class="before">5</span><span class="arrow">→</span><span class="after">14</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">12</span>
-              <span class="arrow">→</span>
-              <span class="after">51</span>
-            </div>
+            <div class="before-after"><span class="before">12</span><span class="arrow">→</span><span class="after">51</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -394,38 +355,23 @@
         </div>
       </div>
 
-      <!-- {{CASE_STUDY_4}} -->
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Sunita P.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 45 days</span>
+          <h3>Dr. Sunita P.</h3>
+          <span class="case-timeline-badge">45 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">15</span>
-              <span class="arrow">→</span>
-              <span class="after">42</span>
-            </div>
+            <div class="before-after"><span class="before">15</span><span class="arrow">→</span><span class="after">42</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">7</span>
-              <span class="arrow">→</span>
-              <span class="after">18</span>
-            </div>
+            <div class="before-after"><span class="before">7</span><span class="arrow">→</span><span class="after">18</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">28</span>
-              <span class="arrow">→</span>
-              <span class="after">76</span>
-            </div>
+            <div class="before-after"><span class="before">28</span><span class="arrow">→</span><span class="after">76</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -435,38 +381,23 @@
         </div>
       </div>
 
-      <!-- {{CASE_STUDY_5}} -->
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Manish G.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 60 days</span>
+          <h3>Dr. Manish G.</h3>
+          <span class="case-timeline-badge">60 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">10</span>
-              <span class="arrow">→</span>
-              <span class="after">44</span>
-            </div>
+            <div class="before-after"><span class="before">10</span><span class="arrow">→</span><span class="after">44</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">6</span>
-              <span class="arrow">→</span>
-              <span class="after">15</span>
-            </div>
+            <div class="before-after"><span class="before">6</span><span class="arrow">→</span><span class="after">15</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">18</span>
-              <span class="arrow">→</span>
-              <span class="after">58</span>
-            </div>
+            <div class="before-after"><span class="before">18</span><span class="arrow">→</span><span class="after">58</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -475,38 +406,23 @@
         </div>
       </div>
 
-      <!-- {{CASE_STUDY_6}} -->
       <div class="case-card reveal">
         <div class="case-header">
-          <div>
-            <h3>Dr. Neha S.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 30 days</span>
+          <h3>Dr. Neha S.</h3>
+          <span class="case-timeline-badge">30 days</span>
         </div>
         <div class="case-metrics">
           <div class="case-metric">
             <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">20</span>
-              <span class="arrow">→</span>
-              <span class="after">61</span>
-            </div>
+            <div class="before-after"><span class="before">20</span><span class="arrow">→</span><span class="after">61</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">12</span>
-              <span class="arrow">→</span>
-              <span class="after">22</span>
-            </div>
+            <div class="before-after"><span class="before">12</span><span class="arrow">→</span><span class="after">22</span></div>
           </div>
           <div class="case-metric">
             <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">30</span>
-              <span class="arrow">→</span>
-              <span class="after">89</span>
-            </div>
+            <div class="before-after"><span class="before">30</span><span class="arrow">→</span><span class="after">89</span></div>
           </div>
         </div>
         <div class="case-badges">
@@ -515,10 +431,11 @@
           <span class="case-badge-tag">Review Automation</span>
         </div>
       </div>
+
     </div>
 
-    <div style="margin-top: 36px;" class="reveal">
-      <button class="btn btn-secondary" id="viewMoreCases">View More Case Studies →</button>
+    <div style="margin-top:36px;" class="reveal">
+      <button class="btn btn-ghost" id="viewMoreCases">View More Case Studies</button>
     </div>
   </div>
 </section>
@@ -528,6 +445,7 @@
      ============================================================ -->
 <section class="section section-alt" id="how-it-works">
   <div class="container text-center">
+    <div class="section-label reveal">Our Process</div>
     <h2 class="section-title reveal">How It Works</h2>
     <p class="section-subtitle reveal">
       We set everything up in just 7 days. Aapko kuch nahi karna — hum sab handle karte hain.
@@ -565,7 +483,6 @@
         <p>Go live! We set up tracking dashboards and weekly reports so you see results from day one.</p>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -574,33 +491,32 @@
      ============================================================ -->
 <section class="section" id="pricing">
   <div class="container text-center">
-    <h2 class="section-title reveal">Simple, Transparent Pricing</h2>
+    <div class="section-label reveal">Transparent Pricing</div>
+    <h2 class="section-title reveal">Simple, <span class="accent">Clear</span> Pricing</h2>
     <p class="section-subtitle reveal">
       One-time fee. No monthly charges. No hidden costs. Bas ek baar pay karo — baaki hum sambhalte hain.
     </p>
 
     <div class="pricing-grid">
-      <!-- Plan 1: Simple Plan -->
+      <!-- Plan 1 -->
       <div class="pricing-card reveal">
         <h3>Simple Plan</h3>
-        <!-- {{PRICING_SIMPLE}} -->
         <div class="price">₹20,000</div>
         <div class="price-note">One-time fee</div>
         <ul>
           <li><span class="check">✓</span> WhatsApp Booking System</li>
           <li><span class="check">✓</span> Appointment Reminders</li>
-          <li><span class="check">✓</span> Basic Setup &amp; Training</li>
+          <li><span class="check">✓</span> Basic Setup & Training</li>
           <li><span class="check">✓</span> 30-day Support</li>
         </ul>
-        <a href="#book-demo" class="btn btn-secondary" style="width:100%;">Get Started</a>
+        <a href="#book-demo" class="btn btn-ghost" style="width:100%;">Get Started</a>
         <p class="best-for">Best for: Small clinics just starting out</p>
       </div>
 
-      <!-- Plan 2: Special Plan (Popular) -->
+      <!-- Plan 2: Popular -->
       <div class="pricing-card popular reveal">
         <div class="popular-tag">Most Popular</div>
         <h3>Special Plan</h3>
-        <!-- {{PRICING_SPECIAL}} -->
         <div class="price">₹40,000</div>
         <div class="price-note">One-time fee</div>
         <ul>
@@ -610,19 +526,17 @@
           <li><span class="check">✓</span> Reminders + Review Automation</li>
           <li><span class="check">✓</span> 60-day Support</li>
         </ul>
-        <a href="#book-demo" class="btn btn-primary" style="width:100%;">Get Started</a>
+        <a href="#book-demo" class="btn btn-jade" style="width:100%;">Get Started</a>
         <p class="best-for">Best for: Growing clinics that want the full package</p>
       </div>
 
-      <!-- Plan 3: Super Plan -->
+      <!-- Plan 3 -->
       <div class="pricing-card reveal" id="superPlanCard">
         <h3>Super Plan</h3>
-        <!-- March Offer — controlled by MARCH_OFFER variable in script.js -->
         <div id="superPlanOffer" style="display:none;">
           <span class="offer-badge">🔥 March Offer</span>
           <div class="original-price">₹60,000</div>
         </div>
-        <!-- {{PRICING_SUPER}} -->
         <div class="price" id="superPlanPrice">₹60,000</div>
         <div class="price-note">One-time fee • No monthly recurring</div>
         <ul>
@@ -634,14 +548,15 @@
           <li><span class="check">✓</span> 90-day Priority Support</li>
           <li><span class="check">✓</span> No Monthly Recurring Fee</li>
         </ul>
-        <a href="#book-demo" class="btn btn-accent" style="width:100%;">Get Started</a>
+        <a href="#book-demo" class="btn btn-primary" style="width:100%;">Get Started</a>
         <p class="best-for">Best for: Clinics wanting everything + a website</p>
       </div>
     </div>
 
     <!-- FAQs -->
-    <h3 class="section-title reveal" style="font-size: 1.5rem; margin-top: 20px;">Frequently Asked Questions</h3>
-    <div class="faq-list" style="margin-top: 28px;">
+    <div class="section-label reveal" style="margin-top:20px;">FAQ</div>
+    <h3 class="section-title reveal" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:8px;">Frequently Asked Questions</h3>
+    <div class="faq-list" style="margin-top:28px;">
       <div class="faq-item reveal">
         <button class="faq-question" aria-expanded="false">
           <span>How soon will I see results?</span>
@@ -649,7 +564,7 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Most clinics start seeing increased calls and bookings within 2–4 weeks. Google Maps ranking improvements typically take 30–60 days depending on competition in your area. WhatsApp booking and reminders work from day 1.
+            Most clinics start seeing increased calls and bookings within 2–4 weeks. Google Maps ranking improvements typically take 30–60 days. WhatsApp booking and reminders work from day 1.
           </div>
         </div>
       </div>
@@ -671,7 +586,7 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            No! All our plans are one-time fees. There are no hidden monthly charges. You pay once and get the full setup. Extended support beyond the included period is available at a nominal fee.
+            No! All our plans are one-time fees. There are no hidden monthly charges. You pay once and get the full setup.
           </div>
         </div>
       </div>
@@ -682,7 +597,7 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            No long-term contracts. It's a one-time engagement. If you're happy with the results (and most dentists are!), you can opt for ongoing support or additional services later.
+            No long-term contracts. It's a one-time engagement. If you're happy (and most dentists are!), you can opt for ongoing support or additional services later.
           </div>
         </div>
       </div>
@@ -695,93 +610,57 @@
      ============================================================ -->
 <section class="section section-alt" id="testimonials">
   <div class="container text-center">
+    <div class="section-label reveal">Social Proof</div>
     <h2 class="section-title reveal">What Dentists Say</h2>
-    <p class="section-subtitle reveal">
-      Hear from dentists who use our system.
-    </p>
+    <p class="section-subtitle reveal">Hear from dentists who use our system.</p>
 
     <div class="testimonials-grid">
-      <!-- {{TESTIMONIAL_1}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "Pehle mahine mein hi 20+ extra calls aaye Google Maps se. WhatsApp booking ne toh game hi change kar diya — patients directly book kar lete hain."
-        </blockquote>
+        <blockquote>Pehle mahine mein hi 20+ extra calls aaye Google Maps se. WhatsApp booking ne toh game hi change kar diya — patients directly book kar lete hain.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DR</div>
-          <div>
-            <div class="testimonial-name">Dr. Rajesh K.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Rajesh K.</div></div>
         </div>
       </div>
-
-      <!-- {{TESTIMONIAL_2}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "No-shows almost zero ho gaye automated reminders ke baad. Plus, every patient ko review request jaata hai — hamari Google rating 3.8 se 4.7 ho gayi."
-        </blockquote>
+        <blockquote>No-shows almost zero ho gaye automated reminders ke baad. Plus, every patient ko review request jaata hai — hamari Google rating 3.8 se 4.7 ho gayi.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DP</div>
-          <div>
-            <div class="testimonial-name">Dr. Priya S.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Priya S.</div></div>
         </div>
       </div>
-
-      <!-- {{TESTIMONIAL_3}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "Chatbot raat ko bhi enquiries handle kar leta hai. Ab subah uthke dekhta hoon toh 4-5 new appointment requests hoti hain. Amazing ROI."
-        </blockquote>
+        <blockquote>Chatbot raat ko bhi enquiries handle kar leta hai. Ab subah uthke dekhta hoon toh 4-5 new appointment requests hoti hain. Amazing ROI.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DA</div>
-          <div>
-            <div class="testimonial-name">Dr. Amit V.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Amit V.</div></div>
         </div>
       </div>
-
-      <!-- {{TESTIMONIAL_4}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "I was skeptical at first, but within 45 days my clinic calls almost tripled. The team is very responsive and handles everything professionally."
-        </blockquote>
+        <blockquote>I was skeptical at first, but within 45 days my clinic calls almost tripled. The team is very responsive and handles everything professionally.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DS</div>
-          <div>
-            <div class="testimonial-name">Dr. Sunita P.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Sunita P.</div></div>
         </div>
       </div>
-
-      <!-- {{TESTIMONIAL_5}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "Best investment I made for my clinic this year. Google Maps ranking improved, patients find us easily now, and the entire booking process is seamless."
-        </blockquote>
+        <blockquote>Best investment I made for my clinic this year. Google Maps ranking improved, patients find us easily now, and the entire booking process is seamless.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DM</div>
-          <div>
-            <div class="testimonial-name">Dr. Manish G.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Manish G.</div></div>
         </div>
       </div>
-
-      <!-- {{TESTIMONIAL_6}} -->
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <blockquote>
-          "Sisaviya team ne pura system set up kiya sirf 7 din mein. Ab mere patients khud WhatsApp pe book karte hain. Staff ka workload bhi kam hua."
-        </blockquote>
+        <blockquote>Sisaviya team ne pura system set up kiya sirf 7 din mein. Ab mere patients khud WhatsApp pe book karte hain. Staff ka workload bhi kam hua.</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">DN</div>
-          <div>
-            <div class="testimonial-name">Dr. Neha S.</div>
-          </div>
+          <div><div class="testimonial-name">Dr. Neha S.</div></div>
         </div>
       </div>
     </div>
@@ -789,17 +668,17 @@
 </section>
 
 <!-- ============================================================
-     7) BOOK A DEMO (Form + WhatsApp)
+     7) BOOK A DEMO
      ============================================================ -->
 <section class="section demo-section" id="book-demo">
   <div class="container text-center">
+    <div class="section-label reveal">Get Started</div>
     <h2 class="section-title reveal">Book Your Free 15-min Demo</h2>
     <p class="section-subtitle reveal">
       Fill the form below and we'll connect on WhatsApp instantly. Koi commitment nahi — just a friendly chat about growing your clinic.
     </p>
 
     <div class="demo-form-card reveal">
-      <!-- The form -->
       <form id="demoForm" novalidate>
         <div class="form-group">
           <label for="formName">Your Name *</label>
@@ -826,37 +705,36 @@
           <div class="checkbox-group">
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="Google Maps SEO" />
-              <span>📍 Google Maps SEO</span>
+              <span>Google Maps SEO</span>
             </label>
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="WhatsApp Booking" />
-              <span>💬 WhatsApp Booking</span>
+              <span>WhatsApp Booking</span>
             </label>
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="Website Chatbot" />
-              <span>🤖 Website Chatbot</span>
+              <span>Website Chatbot</span>
             </label>
             <label class="checkbox-label">
               <input type="checkbox" name="services" value="Reminders & Reviews" />
-              <span>🔔 Reminders &amp; Reviews</span>
+              <span>Reminders &amp; Reviews</span>
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
-          📅 Book Free Demo
+        <button type="submit" class="btn btn-jade btn-lg" style="width:100%;margin-top:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book Free Demo
         </button>
       </form>
 
-      <!-- Success State -->
       <div class="form-success" id="formSuccess">
         <div class="success-icon">✓</div>
-        <h3>Thank You! 🎉</h3>
+        <h3>Thank You!</h3>
         <p>We've received your details. Let's connect on WhatsApp to schedule your demo!</p>
         <a id="waRedirectBtn" href="#" class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener" style="width:100%;">
-          💬 Continue on WhatsApp
+          Continue on WhatsApp
         </a>
-        <!-- Fallback WhatsApp button with generic message -->
-        <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20a%20demo%20for%20the%20Dental%20Patient%20Growth%20System." class="btn btn-secondary btn-sm" target="_blank" rel="noopener" style="width:100%; margin-top: 12px;" id="waFallbackBtn">
+        <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20a%20demo%20for%20the%20Dental%20Patient%20Growth%20System." class="btn btn-ghost btn-sm" target="_blank" rel="noopener" style="width:100%;margin-top:12px;" id="waFallbackBtn">
           Or send a general WhatsApp message
         </a>
       </div>
@@ -873,7 +751,7 @@
       <div>
         <div class="footer-brand">Sisaviya<span>.in</span></div>
         <p>More Patients. Less No-shows. Fully Automated.</p>
-        <p style="margin-top: 12px;">We help dental clinics across India grow with Google Maps SEO, WhatsApp automation, and smart patient engagement systems.</p>
+        <p style="margin-top:10px;">We help dental clinics across India grow with Google Maps SEO, WhatsApp automation, and smart patient engagement systems.</p>
       </div>
       <div>
         <h4>Quick Links</h4>
@@ -887,11 +765,9 @@
       <div>
         <h4>Get In Touch</h4>
         <div class="footer-links">
-          <!-- {{DISPLAY_PHONE}} — replace with your display phone number -->
-          <a href="tel:+919798729776">📞 +91 97987 29776</a>
-          <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20Dental%20Patient%20Growth%20System." target="_blank" rel="noopener">💬 WhatsApp</a>
-          <!-- {{EMAIL_PLACEHOLDER}} -->
-          <a href="mailto:hello@sisaviya.in">📧 hello@sisaviya.in</a>
+          <a href="tel:+919798729776">+91 97987 29776</a>
+          <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20Dental%20Patient%20Growth%20System." target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="mailto:hello@sisaviya.in">hello@sisaviya.in</a>
         </div>
       </div>
     </div>
@@ -901,207 +777,52 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     STICKY MOBILE CTA BAR
-     ============================================================ -->
+<!-- STICKY MOBILE CTA -->
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
-    <!-- {{DISPLAY_PHONE}} -->
-    <a href="tel:+919798729776" class="sticky-cta-btn call" aria-label="Call us">
-      📞 Call
-    </a>
-    <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20a%20demo%20for%20the%20Dental%20Patient%20Growth%20System." class="sticky-cta-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp us">
-      💬 WhatsApp
-    </a>
-    <!-- {{CALENDLY_OR_DEMO_LINK}} -->
-    <a href="#book-demo" class="sticky-cta-btn demo" aria-label="Book demo">
-      📅 Book Demo
-    </a>
+    <a href="tel:+919798729776" class="sticky-cta-btn call" aria-label="Call us">📞 Call</a>
+    <a href="https://wa.me/919798729776?text=Hi%2C%20I%20want%20a%20demo%20for%20the%20Dental%20Patient%20Growth%20System." class="sticky-cta-btn whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp us">💬 WhatsApp</a>
+    <a href="#book-demo" class="sticky-cta-btn demo" aria-label="Book demo">📅 Book Demo</a>
   </div>
 </div>
 
-<!-- ============================================================
-     MODAL — More Case Studies
-     ============================================================ -->
+<!-- MODAL — More Case Studies -->
 <div class="modal-overlay" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
   <div class="modal-content">
     <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
-    <h2 id="caseModalTitle" class="section-title" style="font-size: 1.5rem; margin-bottom: 24px;">More Case Studies</h2>
+    <div class="section-label" style="margin-bottom:16px;">More Results</div>
+    <h2 id="caseModalTitle" class="section-title" style="font-size:1.5rem;margin-bottom:28px;">More Case Studies</h2>
     <div class="results-grid">
-      <!-- {{EXTRA_CASE_1}} -->
       <div class="case-card">
-        <div class="case-header">
-          <div>
-            <h3>Dr. Rohit M.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 45 days</span>
-        </div>
+        <div class="case-header"><h3>Dr. Rohit M.</h3><span class="case-timeline-badge">45 days</span></div>
         <div class="case-metrics">
-          <div class="case-metric">
-            <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">14</span>
-              <span class="arrow">→</span>
-              <span class="after">48</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">8</span>
-              <span class="arrow">→</span>
-              <span class="after">17</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">22</span>
-              <span class="arrow">→</span>
-              <span class="after">68</span>
-            </div>
-          </div>
+          <div class="case-metric"><div class="label">Calls/mo</div><div class="before-after"><span class="before">14</span><span class="arrow">→</span><span class="after">48</span></div></div>
+          <div class="case-metric"><div class="label">Appts/wk</div><div class="before-after"><span class="before">8</span><span class="arrow">→</span><span class="after">17</span></div></div>
+          <div class="case-metric"><div class="label">Reviews</div><div class="before-after"><span class="before">22</span><span class="arrow">→</span><span class="after">68</span></div></div>
         </div>
-        <div class="case-badges">
-          <span class="case-badge-tag">Google Maps SEO</span>
-          <span class="case-badge-tag">Review Automation</span>
-        </div>
+        <div class="case-badges"><span class="case-badge-tag">Google Maps SEO</span><span class="case-badge-tag">Review Automation</span></div>
       </div>
-
-      <!-- {{EXTRA_CASE_2}} -->
       <div class="case-card">
-        <div class="case-header">
-          <div>
-            <h3>Dr. Sanjay G.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 30 days</span>
-        </div>
+        <div class="case-header"><h3>Dr. Sanjay G.</h3><span class="case-timeline-badge">30 days</span></div>
         <div class="case-metrics">
-          <div class="case-metric">
-            <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">22</span>
-              <span class="arrow">→</span>
-              <span class="after">58</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">13</span>
-              <span class="arrow">→</span>
-              <span class="after">24</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">45</span>
-              <span class="arrow">→</span>
-              <span class="after">112</span>
-            </div>
-          </div>
+          <div class="case-metric"><div class="label">Calls/mo</div><div class="before-after"><span class="before">22</span><span class="arrow">→</span><span class="after">58</span></div></div>
+          <div class="case-metric"><div class="label">Appts/wk</div><div class="before-after"><span class="before">13</span><span class="arrow">→</span><span class="after">24</span></div></div>
+          <div class="case-metric"><div class="label">Reviews</div><div class="before-after"><span class="before">45</span><span class="arrow">→</span><span class="after">112</span></div></div>
         </div>
-        <div class="case-badges">
-          <span class="case-badge-tag">WhatsApp Booking</span>
-          <span class="case-badge-tag">Chatbot</span>
-          <span class="case-badge-tag">Reminders</span>
-        </div>
-      </div>
-
-      <!-- {{EXTRA_CASE_3}} -->
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <h3>Dr. Kavita R.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 60 days</span>
-        </div>
-        <div class="case-metrics">
-          <div class="case-metric">
-            <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">9</span>
-              <span class="arrow">→</span>
-              <span class="after">36</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">4</span>
-              <span class="arrow">→</span>
-              <span class="after">13</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">15</span>
-              <span class="arrow">→</span>
-              <span class="after">52</span>
-            </div>
-          </div>
-        </div>
-        <div class="case-badges">
-          <span class="case-badge-tag">Google Maps SEO</span>
-          <span class="case-badge-tag">WhatsApp Booking</span>
-          <span class="case-badge-tag">Review Automation</span>
-        </div>
-      </div>
-
-      <!-- {{EXTRA_CASE_4}} -->
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <h3>Dr. Vikram T.</h3>
-          </div>
-          <span class="case-timeline-badge">⏱ 45 days</span>
-        </div>
-        <div class="case-metrics">
-          <div class="case-metric">
-            <div class="label">Calls/mo</div>
-            <div class="before-after">
-              <span class="before">16</span>
-              <span class="arrow">→</span>
-              <span class="after">51</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Appts/wk</div>
-            <div class="before-after">
-              <span class="before">10</span>
-              <span class="arrow">→</span>
-              <span class="after">21</span>
-            </div>
-          </div>
-          <div class="case-metric">
-            <div class="label">Reviews</div>
-            <div class="before-after">
-              <span class="before">32</span>
-              <span class="arrow">→</span>
-              <span class="after">85</span>
-            </div>
-          </div>
-        </div>
-        <div class="case-badges">
-          <span class="case-badge-tag">Google Maps SEO</span>
-          <span class="case-badge-tag">Chatbot</span>
-        </div>
+        <div class="case-badges"><span class="case-badge-tag">WhatsApp Booking</span><span class="case-badge-tag">Chatbot</span><span class="case-badge-tag">Reminders</span></div>
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- ============================================================
-     CHATBOT WIDGET
-     ============================================================ -->
+<!-- CHATBOT WIDGET -->
 <div class="chatbot-container" id="chatbotContainer">
   <div class="chatbot-window" id="chatbotWindow">
     <div class="chatbot-header">
       <div class="chatbot-header-info">
-        <div class="chatbot-avatar">🤖</div>
+        <div class="chatbot-avatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+        </div>
         <div>
           <h4>Sisaviya AI Support</h4>
           <span class="online-status">Online</span>
@@ -1111,28 +832,24 @@
     </div>
     <div class="chatbot-messages" id="chatbotMessages">
       <div class="chat-message bot">
-        <div class="message-content">
-          Hi! I'm your AI assistant. How can I help you grow your dental clinic today?
-        </div>
+        <div class="message-content">Hi! I'm your AI assistant. How can I help you grow your dental clinic today?</div>
       </div>
     </div>
     <div class="chatbot-input-area">
       <input type="text" id="chatbotInput" placeholder="Type your message..." />
       <button id="chatbotSend" aria-label="Send message">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
   </div>
   <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">
-    <span class="icon-chat">💬</span>
-    <span class="icon-close" style="display:none; font-size: 2rem; line-height: 1;">&times;</span>
+    <span class="icon-chat">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </span>
+    <span class="icon-close" style="display:none;font-size:1.6rem;line-height:1;">&times;</span>
   </button>
 </div>
 
-<!-- Scripts -->
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
